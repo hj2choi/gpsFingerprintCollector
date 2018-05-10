@@ -117,14 +117,6 @@ public class MainActivity extends AppCompatActivity
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        String pp = FileUtils.generateFilePath();
-        Log.d("MainActivity", "filesave :"+pp);
-        try {
-            FileUtils.writeLine("test", pp);
-        } catch (Exception e) {
-            Log.d("MainActivity", "filesave exception caused by:"+e);
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -253,20 +245,6 @@ public class MainActivity extends AppCompatActivity
                             LatLng latLng = new LatLng(mLastKnownLocation.getLatitude(),
                                     mLastKnownLocation.getLongitude());
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, DEFAULT_ZOOM));
-                            /*if (mRawLocationMarker ==null) {
-                                mRawLocationMarker = mMap.addMarker(new MarkerOptions().position(latLng)
-                                        .title("raw GPS location"));
-                                mRawLocationCircle = mMap.addCircle(new CircleOptions()
-                                        .center(latLng)
-                                        .radius(mLastKnownLocation.getAccuracy())
-                                        .strokeWidth(0)
-                                        .fillColor(0x220000FF));
-                            }
-                            else {
-                                mRawLocationMarker.setPosition(latLng);
-                                mRawLocationCircle.setCenter(latLng);
-                                mRawLocationCircle.setRadius(mLastKnownLocation.getAccuracy());
-                            }*/
                         } else {
                             Log.d(TAG, "Current location is null. Using defaults.");
                             Log.e(TAG, "Exception: %s", task.getException());
